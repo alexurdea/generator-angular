@@ -1,5 +1,5 @@
 {
-  "name": "generator-angular",
+  "name": "my-forked-generator-angular",
   "version": "0.2.2",
   "description": "Yeoman generator for AngularJS",
   "keywords": [
@@ -10,6 +10,7 @@
     "front-end",
     "app"
   ],
+  "private": true,
   "homepage": "https://github.com/yeoman/generator-angular",
   "bugs": "https://github.com/yeoman/generator-angular/issues",
   "author": "Chrome Developer Relations",
