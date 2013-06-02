@@ -1,6 +1,7 @@
 'use strict';
 var markdown = require('marked');
 var semver = require('semver');
+var BUILD_DIR = process.cwd() + '/build';
 
 module.exports = function (grunt) {
   grunt.initConfig({
@@ -22,6 +23,20 @@ module.exports = function (grunt) {
     stage: {
       options: {
         files: ['CHANGELOG.md']
+      }
+    },
+    clean: {
+      'create-build-dir': ['build']
+    },
+    compress: {
+      'create-tar': {
+        options: {
+          mode: 'tgz',
+          archive: 'build/my-forked-generator-angular.tgz'
+        },
+        files: {
+          '.' : ['**/*', '!node_modules/**/*']
+        }
       }
     }
   });
@@ -46,6 +61,12 @@ module.exports = function (grunt) {
     grunt.log.ok('Version bumped to ' + config.newVersion);
   });
 
+  grunt.registerTask('create-build-dir', 'Create the directory where the tarball will be placed & clear it if needed', function(){
+    grunt.file.isDir(BUILD_DIR) || grunt.file.mkdir(BUILD_DIR);
+  });
+
+  grunt.registerTask('create-tar', ['clean', 'create-build-dir', 'compress']);
+
   grunt.registerTask('stage', 'git add files before running the release task', function () {
     var files = this.options().files;
     grunt.util.spawn({
@@ -56,6 +77,8 @@ module.exports = function (grunt) {
 
   grunt.loadNpmTasks('grunt-release');
   grunt.loadNpmTasks('grunt-conventional-changelog');
+  grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-compress');
 
   grunt.registerTask('default', ['bump', 'changelog', 'stage', 'release']);
 };
