@@ -10,14 +10,10 @@
     "front-end",
     "app"
   ],
-  "private": true,
-  "homepage": "https://github.com/yeoman/generator-angular",
-  "bugs": "https://github.com/yeoman/generator-angular/issues",
-  "author": "Chrome Developer Relations",
   "main": "app/index.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/yeoman/generator-angular.git"
+    "url": "https://github.com/alexurdea/generator-angular.git"
   },
   "scripts": {
     "test": "mocha"
