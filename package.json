@@ -1,6 +1,6 @@
 {
   "name": "generator-my-forked-angular",
-  "version": "0.3.2",
+  "version": "0.3.5",
   "description": "Modified Yeoman generator for AngularJS",
   "keywords": [
     "yeoman-generator",
@@ -27,9 +27,12 @@
     "grunt-conventional-changelog": "~0.0.12",
     "marked": "~0.2.8",
     "semver": "~1.1.4",
+    "node-curl": "0.3.1",
+    "findup-sync": "0.1.2",
     "grunt-release": "~0.3.3",
     "grunt-contrib-clean": "0.4.1",
-    "grunt-contrib-compress": "0.5.1"
+    "grunt-contrib-compress": "0.5.1",
+    "exec-sync": "0.1.5"
   },
   "engines": {
     "node": ">=0.8.0"

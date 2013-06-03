@@ -2,6 +2,7 @@
 var markdown = require('marked');
 var semver = require('semver');
 var BUILD_DIR = process.cwd() + '/build';
+var GEMFURY_TOKEN = 'B3sgGDCDTmhhSFK5s8XU';
 
 module.exports = function (grunt) {
   grunt.initConfig({
@@ -32,7 +33,7 @@ module.exports = function (grunt) {
       'tar': {
         options: {
           mode: 'tgz',
-          archive: 'build/my-forked-generator-angular.tgz'
+          archive: 'build/generator-my-forked-angular.tgz'
         },
         files: {
           '.' : ['**/*', '!node_modules/**/*', '!build/**/*']
@@ -73,6 +74,33 @@ module.exports = function (grunt) {
       cmd: process.platform === 'win32' ? 'git.cmd' : 'git',
       args: ['add'].concat(files)
     }, grunt.task.current.async());
+  });
+
+  grunt.registerTask('pack', 'Deploy this package to gemfury', function(){
+    var execSync = require('exec-sync');
+    execSync('if [ -f generator-my-forked-angular-*.tgz ]; then rm generator-my-forked-angular-*.tgz; fi');
+    execSync('npm pack');
+  });
+
+  grunt.registerTask('upload-gemfury', function(){
+    // find the package file, we don't know the version
+    var findupSync = require('findup-sync');
+    var file = findupSync('generator-my-forked-angular-*.tgz', {
+      nocase: false
+    });
+    
+    var curlCmd = 'curl -F p1=@' + file + ' https://push.fury.io/' + GEMFURY_TOKEN + '/';
+    console.log(curlCmd);
+
+    var execSync = require('exec-sync');
+    execSync(curlCmd);
+  });
+
+  grunt.registerTask('gemfury', function(){
+    var tasks = ['pack', 'upload-gemfury'];
+
+    grunt.option('force', true);
+    grunt.task.run(tasks);
   });
 
   grunt.loadNpmTasks('grunt-release');
