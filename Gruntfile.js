@@ -29,7 +29,7 @@ module.exports = function (grunt) {
       'create-build-dir': ['build']
     },
     compress: {
-      'create-tar': {
+      'tar': {
         options: {
           mode: 'tgz',
           archive: 'build/my-forked-generator-angular.tgz'
@@ -65,7 +65,7 @@ module.exports = function (grunt) {
     grunt.file.isDir(BUILD_DIR) || grunt.file.mkdir(BUILD_DIR);
   });
 
-  grunt.registerTask('create-tar', ['clean', 'create-build-dir', 'compress']);
+  grunt.registerTask('tar', ['clean', 'create-build-dir', 'compress']);
 
   grunt.registerTask('stage', 'git add files before running the release task', function () {
     var files = this.options().files;
