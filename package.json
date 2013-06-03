@@ -1,6 +1,6 @@
 {
-  "name": "my-forked-generator-angular",
-  "version": "0.3.0",
+  "name": "generator-my-forked-angular",
+  "version": "0.3.1",
   "description": "Modified Yeoman generator for AngularJS",
   "keywords": [
     "yeoman-generator",
@@ -10,14 +10,7 @@
     "front-end",
     "app"
   ],
-  "homepage": "https://github.com/yeoman/generator-angular",
-  "bugs": "https://github.com/yeoman/generator-angular/issues",
-  "author": "Chrome Developer Relations",
   "main": "app/index.js",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/yeoman/generator-angular.git"
-  },
   "scripts": {
     "test": "mocha"
   },
@@ -34,7 +27,9 @@
     "grunt-conventional-changelog": "~0.0.12",
     "marked": "~0.2.8",
     "semver": "~1.1.4",
-    "grunt-release": "~0.3.3"
+    "grunt-release": "~0.3.3",
+    "grunt-contrib-clean": "0.4.1",
+    "grunt-contrib-compress": "0.5.1"
   },
   "engines": {
     "node": ">=0.8.0"
