@@ -35,7 +35,7 @@ module.exports = function (grunt) {
           archive: 'build/my-forked-generator-angular.tgz'
         },
         files: {
-          '.' : ['**/*', '!node_modules/**/*']
+          '.' : ['**/*', '!node_modules/**/*', '!build/**/*']
         }
       }
     }
