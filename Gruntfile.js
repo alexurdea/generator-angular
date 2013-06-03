@@ -2,7 +2,7 @@
 var markdown = require('marked');
 var semver = require('semver');
 var BUILD_DIR = process.cwd() + '/build';
-var GEMFURY_TOKEN = 'B3sgGDCDTmhhSFK5s8XU';
+var GEMFURY_TOKEN = require('config').token;
 
 module.exports = function (grunt) {
   grunt.initConfig({

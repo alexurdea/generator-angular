@@ -32,6 +32,8 @@
     "grunt-release": "~0.3.3",
     "grunt-contrib-clean": "0.4.1",
     "grunt-contrib-compress": "0.5.1",
+    "config": "0.4.25",
+    "yaml": "0.2.3",
     "exec-sync": "0.1.5"
   },
   "engines": {
